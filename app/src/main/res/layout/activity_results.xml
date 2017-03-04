@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	android:id="@+id/activity_results"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.arterialist.searchsploit.activities.ResultsActivity">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/deepOrange500"/>
+
+	<android.support.design.widget.TabLayout
+		android:id="@+id/tabLayout"
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+		android:layout_below="@+id/toolbar"
+		android:background="@color/deepOrange500"
+		android:visibility="gone"
+		app:tabIndicatorColor="@android:color/white"
+		app:tabMode="scrollable"
+		app:tabIndicatorHeight="2dp"
+		app:tabSelectedTextColor="@android:color/white"
+		app:tabTextColor="@android:color/white"/>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/list"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@+id/tabLayout"/>
+
+</RelativeLayout>

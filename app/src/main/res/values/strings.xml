@@ -1,0 +1,139 @@
+<resources>
+	<string name="app_name">Searchsploit</string>
+
+	<string name="text.hint.query">Enter your query here</string>
+
+	<string name="text.simple.bookmarks">Bookmarks</string>
+	<string name="text.simple.platform">Platform</string>
+	<string name="text.simple.download">Download</string>
+	<string name="text.simple.options">Options</string>
+	<string name="text.simple.preview">Preview</string>
+	<string name="text.simple.search">Search!</string>
+	<string name="text.simple.choose">Choose</string>
+	<string name="text.simple.finish">Finish</string>
+	<string name="text.simple.author">Author</string>
+	<string name="text.simple.title">Title</string>
+	<string name="text.simple.date">Date</string>
+	<string name="text.simple.type">Type</string>
+	<string name="text.simple.port">Port</string>
+	<string name="text.simple.yes">Yes</string>
+	<string name="text.simple.no">No</string>
+	<string name="text.simple.id">ID</string>
+
+	<string name="text.normal.connect_to_internet">Please connect to Internet.</string>
+	<string name="text.normal.downloading_db">Downloading exploit database.</string>
+	<string name="text.normal.downloading_exploit">Downloading exploit %s</string>
+	<string name="text.normal.search_by_platform">Search by platform</string>
+	<string name="text.normal.configure_database">Configure database</string>
+	<string name="text.normal.option_case_sensitive">Case sensitive</string>
+	<string name="text.normal.results_title">Results - %d items</string>
+	<string name="text.normal.update_database">Update database</string>
+	<string name="text.normal.remove_bookmark">Remove bookmark</string>
+	<string name="text.normal.choose_file">Please choose file.</string>
+	<string name="text.normal.search_by_type">Search by type</string>
+	<string name="text.normal.search_by_word">Search by word</string>
+	<string name="text.normal.show_bookmarks">Show bookmarks</string>
+	<string name="text.normal.bookmark_this">Bookmark this</string>
+	<string name="text.normal.search_by_id">Search by id</string>
+	<string name="text.normal.no_network">No network</string>
+
+	<string name="text.long.downloading_db_description">For more info check out offensive security repo.</string>
+	<string name="text.long.db_setup_title">We need to set up database of exploits for this app to work.</string>
+	<string name="text.long.do_download">Do you want to download it now? It\'s about 5Mb in size.</string>
+	<string name="text.long.is_db_on_device">Do you have database downloaded on your device?</string>
+
+	<string name="text.warn.no_database">Warning! No database was specified, so search is unavailable. Press here to set up database.</string>
+
+	<string name="text.url.database">https://raw.githubusercontent.com/offensive-security/exploit-database/master/files.csv</string>
+	<string name="text.url.repo">https://github.com/offensive-security/exploit-database</string>
+
+	<string name="text.error.empty_field">Empty field!</string>
+	<string name="text.error.not_int">Query is not a valid id!</string>
+	<string name="text.normal.descending_order">Descending order</string>
+	<string name="text.normal.sort_by_title">Sort by title</string>
+	<string name="text.normal.sort_by_date">Sort by date</string>
+	<string name="text.normal.sort_by_platform">Sort by platform</string>
+	<string name="text.normal.file_type">File type</string>
+	<string name="text.normal.search_each_word">Search each word</string>
+	<string name="text.normal.export_bookmarks">Export bookmarks</string>
+	<string name="text.normal.import_bookmarks">Import bookmarks</string>
+	<string name="text.normal.text_size">Text size:</string>
+	<string name="text.simple.light">Light</string>
+	<string name="text.simple.dark">Dark</string>
+
+	<string-array name="platforms">
+		<item>aix</item>
+		<item>android</item>
+		<item>arm</item>
+		<item>ashx</item>
+		<item>asp</item>
+		<item>aspx</item>
+		<item>atheos</item>
+		<item>beos</item>
+		<item>bsd</item>
+		<item>bsd_ppc</item>
+		<item>bsd_x86</item>
+		<item>bsdi_x86</item>
+		<item>cfm</item>
+		<item>cgi</item>
+		<item>freebsd</item>
+		<item>freebsd_x86</item>
+		<item>freebsd_x86-64</item>
+		<item>generator</item>
+		<item>hardware</item>
+		<item>hp-ux</item>
+		<item>immunix</item>
+		<item>ios</item>
+		<item>irix</item>
+		<item>java</item>
+		<item>json</item>
+		<item>jsp</item>
+		<item>lin_x86</item>
+		<item>lin_x86-64</item>
+		<item>linux</item>
+		<item>linux_mips</item>
+		<item>linux_ppc</item>
+		<item>linux_sparc</item>
+		<item>macos</item>
+		<item>minix</item>
+		<item>multiple</item>
+		<item>netbsd_x86</item>
+		<item>netware</item>
+		<item>novell</item>
+		<item>openbsd</item>
+		<item>openbsd_x86</item>
+		<item>osx</item>
+		<item>osx_ppc</item>
+		<item>palm_os</item>
+		<item>perl</item>
+		<item>php</item>
+		<item>plan9</item>
+		<item>python</item>
+		<item>qnx</item>
+		<item>ruby</item>
+		<item>sco</item>
+		<item>sco_x86</item>
+		<item>sh4</item>
+		<item>solaris</item>
+		<item>solaris_sparc</item>
+		<item>solaris_x86</item>
+		<item>system_z</item>
+		<item>tru64</item>
+		<item>ultrix</item>
+		<item>unix</item>
+		<item>unixware</item>
+		<item>win_x86</item>
+		<item>win_x86-64</item>
+		<item>windows</item>
+		<item>xml</item>
+	</string-array>
+
+	<string-array name="types">
+		<item>dos</item>
+		<item>local</item>
+		<item>remote</item>
+		<item>shellcode</item>
+		<item>webapps</item>
+	</string-array>
+
+</resources>

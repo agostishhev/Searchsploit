@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/deepOrange500">
+
+		<Switch
+			android:id="@+id/dark_theme"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end"
+			android:layout_marginRight="17dp"/>
+
+	</android.support.v7.widget.Toolbar>
+
+	<LinearLayout
+		android:id="@+id/activity_main"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="8dp" tools:context="com.arterialist.searchsploit.activities.MainActivity">
+
+		<Button
+			android:id="@+id/no_database_button"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:background="@color/red500"
+			android:text="@string/text.warn.no_database"
+			android:textAllCaps="false"
+			android:textSize="15sp"
+			android:theme="@style/AppTheme.WarningButton"
+			android:visibility="gone"/>
+
+		<EditText
+			android:id="@+id/query_field"
+			android:layout_width="match_parent"
+			android:layout_height="45dp"
+			android:hint="@string/text.hint.query"
+			android:maxLines="1"
+			android:textColor="@color/grey700"
+			android:textSize="19sp"
+			tools:text="Apple"/>
+
+		<Spinner
+			android:id="@+id/spinner"
+			android:layout_width="match_parent"
+			android:layout_height="45dp"
+			android:entries="@array/platforms"
+			android:visibility="gone"/>
+
+		<TextView
+			android:id="@+id/options_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="5dp"
+			android:text="@string/text.simple.options"
+			android:textSize="20sp"
+			android:textStyle="bold"/>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="2dp"
+			android:background="@color/grey300"/>
+
+		<CheckBox
+			android:id="@+id/case_sensitive"
+			android:layout_width="wrap_content"
+			android:layout_height="40dp"
+			android:text="@string/text.normal.option_case_sensitive"
+			android:textColor="@color/grey700"
+			android:textSize="18sp"/>
+
+		<CheckBox
+			android:id="@+id/each_word_search"
+			android:layout_width="wrap_content"
+			android:layout_height="40dp"
+			android:text="@string/text.normal.search_each_word"
+			android:textColor="@color/grey700"
+			android:textSize="18sp"/>
+
+		<RadioGroup
+			android:id="@+id/search_types"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<RadioButton
+				android:id="@+id/search_type_id"
+				android:layout_width="wrap_content"
+				android:layout_height="40dp"
+				android:text="@string/text.normal.search_by_id"
+				android:textColor="@color/grey700"
+				android:textSize="18sp"/>
+
+			<RadioButton
+				android:id="@+id/search_type_word"
+				android:layout_width="wrap_content"
+				android:layout_height="40dp"
+				android:checked="true"
+				android:text="@string/text.normal.search_by_word"
+				android:textColor="@color/grey700"
+				android:textSize="18sp"/>
+
+			<RadioButton
+				android:id="@+id/search_type_platform"
+				android:layout_width="wrap_content"
+				android:layout_height="40dp"
+				android:text="@string/text.normal.search_by_platform"
+				android:textColor="@color/grey700"
+				android:textSize="18sp"/>
+
+			<RadioButton
+				android:id="@+id/search_type_type"
+				android:layout_width="wrap_content"
+				android:layout_height="40dp"
+				android:text="@string/text.normal.search_by_type"
+				android:textColor="@color/grey700"
+				android:textSize="18sp"/>
+
+		</RadioGroup>
+
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="70dp">
+
+			<Button
+				android:id="@+id/search"
+				android:layout_width="100dp"
+				android:layout_height="50dp"
+				android:layout_centerInParent="true"
+				android:text="@string/text.simple.search"
+				android:theme="@style/AppTheme.NormalButton"/>
+
+			<ProgressBar
+				android:id="@+id/progress"
+				style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+				android:layout_width="180dp"
+				android:layout_height="15dp"
+				android:layout_centerInParent="true"
+				android:indeterminate="true"
+				android:visibility="invisible"/>
+		</RelativeLayout>
+
+	</LinearLayout>
+</LinearLayout>
+

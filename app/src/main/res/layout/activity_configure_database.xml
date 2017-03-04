@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<include
+		layout="@layout/layout_toolbar"/>
+
+	<LinearLayout
+		android:id="@+id/activity_configure_database"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="8dp" tools:context="com.arterialist.searchsploit.activities.ConfigureDatabaseActivity">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/text.long.db_setup_title"
+			android:textColor="@color/grey700"
+			android:textSize="18sp"/>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="2dp"
+			android:layout_marginBottom="6dp"
+			android:layout_marginTop="6dp"
+			android:background="@color/grey300"/>
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/text.long.is_db_on_device"
+			android:textColor="@color/grey700"
+			android:textSize="18sp"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:layout_marginBottom="10dp"
+			android:orientation="horizontal"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:weightSum="2">
+
+			<Button
+				android:id="@+id/db_no"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1"
+				android:text="@string/text.simple.no"
+				android:theme="@style/AppTheme.WarningButton"/>
+
+			<Button
+				android:id="@+id/db_yes"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1"
+				android:text="@string/text.simple.yes"
+				android:theme="@style/AppTheme.NormalButton"/>
+
+		</LinearLayout>
+
+		<View
+			android:id="@+id/first_divider"
+			android:layout_width="match_parent"
+			android:layout_height="2dp"
+			android:layout_marginBottom="3dp"/>
+
+		<TextView
+			android:id="@+id/do_download"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/text.long.do_download"
+			android:textColor="@color/grey700"
+			android:textSize="18sp"
+			android:visibility="gone"/>
+
+		<LinearLayout
+			android:id="@+id/download_choice"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:layout_marginBottom="10dp"
+			android:orientation="horizontal"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:visibility="gone"
+			android:weightSum="2">
+
+			<Button
+				android:id="@+id/download_no"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1"
+				android:text="@string/text.simple.no"
+				android:theme="@style/AppTheme.WarningButton"/>
+
+			<Button
+				android:id="@+id/download_yes"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1"
+				android:text="@string/text.simple.yes"
+				android:theme="@style/AppTheme.NormalButton"/>
+
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/choose_file_text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/text.normal.choose_file"
+			android:textColor="@color/grey700"
+			android:textSize="18sp"
+			android:visibility="gone"/>
+
+		<Button
+			android:id="@+id/choose_file"
+			android:layout_width="170dp"
+			android:layout_height="40dp"
+			android:layout_gravity="center_horizontal"
+			android:text="@string/text.simple.choose"
+			android:visibility="gone"/>
+
+		<Button
+			android:id="@+id/finish"
+			android:layout_width="80dp"
+			android:layout_height="45dp"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="120dp"
+			android:text="@string/text.simple.finish"
+			android:visibility="invisible"/>
+
+	</LinearLayout>
+</LinearLayout>
+

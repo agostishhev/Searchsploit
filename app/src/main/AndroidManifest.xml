@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.arterialist.searchsploit"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+
+	<application
+		android:name=".common.App"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name=".activities.MainActivity"
+			android:screenOrientation="portrait">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".activities.ResultsActivity"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name=".activities.ConfigureDatabaseActivity"
+			android:label="@string/text.normal.configure_database"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name=".activities.ExploitActivity"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name=".activities.BookmarksActivity"
+			android:label="@string/text.simple.bookmarks"
+			android:screenOrientation="portrait"/>
+		<activity android:name=".activities.PreviewActivity"/>
+
+	</application>
+
+</manifest>

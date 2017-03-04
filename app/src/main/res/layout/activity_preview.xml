@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	android:id="@+id/activity_preview"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.arterialist.searchsploit.activities.PreviewActivity">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/deepOrange500">
+
+		<TextView
+			android:id="@+id/title"
+			android:layout_width="300dp"
+			android:layout_height="30dp"
+			android:gravity="center_vertical"
+			android:maxLines="1"
+			android:textColor="@android:color/white"
+			android:textSize="19sp"/>
+
+	</android.support.v7.widget.Toolbar>
+
+	<TextView
+		android:id="@+id/previewText"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/settingsBar"
+		android:layout_below="@+id/toolbar"
+		android:autoLink="all"
+		android:isScrollContainer="true"
+		android:linksClickable="true"
+		android:scrollHorizontally="true"
+		android:textIsSelectable="true"
+		android:textSize="15sp"/>
+
+	<LinearLayout
+		android:id="@+id/settingsBar"
+		android:layout_width="match_parent"
+		android:layout_height="55dp"
+		android:layout_alignParentBottom="true"
+		android:background="@color/grey300"
+		android:orientation="horizontal"
+		android:padding="6dp">
+
+		<TextView
+			android:id="@+id/textSizeText"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_marginRight="5dp"
+			android:gravity="center_vertical"
+			android:text="@string/text.normal.text_size"
+			android:textColor="@color/grey700"
+			android:textSize="20sp"/>
+
+		<Button
+			android:id="@+id/textSizeDown"
+			style="@style/AppTheme.BorderlessButton"
+			android:layout_width="43dp"
+			android:layout_height="match_parent"
+			android:text="-"
+			android:textSize="25sp"
+			tools:ignore="HardcodedText"/>
+
+		<Button
+			android:id="@+id/textSizeUp"
+			style="@style/AppTheme.BorderlessButton"
+			android:layout_width="43dp"
+			android:layout_height="wrap_content"
+			android:text="+"
+			android:textSize="25sp"
+			tools:ignore="HardcodedText"/>
+
+		<View
+			android:layout_width="2dp"
+			android:layout_height="match_parent"
+			android:layout_marginLeft="5dp"
+			android:layout_marginRight="20dp"
+			android:background="@color/grey400"/>
+
+		<TextView
+			android:id="@+id/themeText"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center_vertical"
+			android:text="@string/text.simple.light"
+			android:textColor="@color/grey700"
+			android:textSize="20sp"/>
+
+		<Switch
+			android:id="@+id/themeSwitch"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_marginLeft="10dp"/>
+
+	</LinearLayout>
+
+</RelativeLayout>

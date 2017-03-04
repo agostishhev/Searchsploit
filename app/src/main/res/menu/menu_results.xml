@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/asc_desc"
+		android:checkable="true"
+		android:title="@string/text.normal.descending_order"/>
+
+	<item
+		android:id="@+id/sort_by_title"
+		android:title="@string/text.normal.sort_by_title"/>
+
+	<item
+		android:id="@+id/sort_by_date"
+		android:title="@string/text.normal.sort_by_date"/>
+
+	<item
+		android:id="@+id/sort_by_platform"
+		android:title="@string/text.normal.sort_by_platform"/>
+
+</menu>
