@@ -29,10 +29,11 @@ Searchsploit is an Android app that allows You to search, view and download expl
 ## Donations
 
 If You want, You can always donate some crypto
+
 BTC: `1Lq7eNUPJVzTPZEjGfA2V6RgED3nEF4ii1`
 ETH: `0x4accd29da05890c6be590a259e7dd3569c7015e2`
 
 ### P.S.
 Thanks to @sygo for idea and @offensive-security for great exploits repo.
 
-If You have any suggestions or questions, feel free to pm me at Telegram: [@Arterialist](t.me/arterialist)
+If You have any suggestions or questions, feel free to pm me at Telegram: [@Arterialist](https://t.me/arterialist)
