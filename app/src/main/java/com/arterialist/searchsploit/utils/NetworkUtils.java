@@ -16,7 +16,7 @@ public class NetworkUtils {
 
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        NetworkInfo netInfo = cm != null ? cm.getActiveNetworkInfo() : null;
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
@@ -37,7 +37,7 @@ public class NetworkUtils {
             }
 
             DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
-            return downloadManager.enqueue(request);
+            return downloadManager != null ? downloadManager.enqueue(request) : -1;
         } else {
             return -1;
         }

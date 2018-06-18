@@ -23,7 +23,7 @@ import com.arterialist.searchsploit.models.Exploit;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class ResultsActivity extends BaseActivity implements ExploitAdapter.OnItemClickListener, Toolbar.OnMenuItemClickListener, TabLayout.OnTabSelectedListener {
 
@@ -31,11 +31,11 @@ public class ResultsActivity extends BaseActivity implements ExploitAdapter.OnIt
     public static final String EXTRA_TABS = "EXTRA_TABS";
     public static final String EXTRA_SLICES_COUNT = "EXTRA_SLICES_COUNT";
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.tabLayout)
+    @BindView(R.id.tabLayout)
     TabLayout tabLayout;
-    @Bind(R.id.list)
+    @BindView(R.id.list)
     RecyclerView recyclerView;
 
     private ArrayList<Exploit> exploits;
@@ -75,7 +75,7 @@ public class ResultsActivity extends BaseActivity implements ExploitAdapter.OnIt
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     String action = intent.getAction();
-                    if (action.equals(IntentStrings.ACTION_NEW_RESULTS)) {
+                    if (IntentStrings.ACTION_NEW_RESULTS.equals(action)) {
                         exploits = intent.getParcelableArrayListExtra(IntentStrings.EXTRA_SLICE);
                         refreshList();
                     }

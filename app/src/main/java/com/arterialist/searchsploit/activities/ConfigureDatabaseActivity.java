@@ -25,7 +25,7 @@ import com.arterialist.searchsploit.R;
 import com.arterialist.searchsploit.utils.HawkUtil;
 import com.arterialist.searchsploit.utils.NetworkUtils;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import ir.sohreco.androidfilechooser.ExternalStorageNotAvailableException;
 import ir.sohreco.androidfilechooser.FileChooserDialog;
@@ -34,20 +34,20 @@ public class ConfigureDatabaseActivity extends BaseActivity implements FileChoos
 
     public static final int PERMISSIONS_REQUEST_CODE = 0x11;
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @Bind(R.id.do_download)
+    @BindView(R.id.do_download)
     TextView doDownloadTV;
-    @Bind(R.id.download_choice)
+    @BindView(R.id.download_choice)
     LinearLayout downloadChoiceLL;
-    @Bind(R.id.choose_file_text)
+    @BindView(R.id.choose_file_text)
     TextView chooseFileTV;
-    @Bind(R.id.choose_file)
+    @BindView(R.id.choose_file)
     Button chooseFileB;
-    @Bind(R.id.first_divider)
+    @BindView(R.id.first_divider)
     View dividerV;
-    @Bind(R.id.finish)
+    @BindView(R.id.finish)
     Button finishB;
 
     public static Intent createIntent(Context context) {

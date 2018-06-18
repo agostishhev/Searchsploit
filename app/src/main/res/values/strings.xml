@@ -44,7 +44,7 @@
 
 	<string name="text.warn.no_database">Warning! No database was specified, so search is unavailable. Press here to set up database.</string>
 
-	<string name="text.url.database">https://raw.githubusercontent.com/offensive-security/exploit-database/master/files.csv</string>
+	<string name="text.url.database">https://raw.githubusercontent.com/offensive-security/exploit-database/master/files_exploits.csv</string>
 	<string name="text.url.repo">https://github.com/offensive-security/exploit-database</string>
 
 	<string name="text.error.empty_field">Empty field!</string>
@@ -132,7 +132,6 @@
 		<item>dos</item>
 		<item>local</item>
 		<item>remote</item>
-		<item>shellcode</item>
 		<item>webapps</item>
 	</string-array>
 

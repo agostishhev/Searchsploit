@@ -1,6 +1,7 @@
 package com.arterialist.searchsploit.activities;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -57,33 +58,33 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, Toolbar.OnMenuItemClickListener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @Bind(R.id.query_field)
+    @BindView(R.id.query_field)
     EditText queryET;
-    @Bind(R.id.options_text)
+    @BindView(R.id.options_text)
     TextView optionsTV;
-    @Bind(R.id.no_database_button)
+    @BindView(R.id.no_database_button)
     Button noDatabaseB;
-    @Bind(R.id.search)
+    @BindView(R.id.search)
     Button searchB;
-    @Bind(R.id.search_types)
+    @BindView(R.id.search_types)
     RadioGroup searchTypesRG;
-    @Bind(R.id.case_sensitive)
+    @BindView(R.id.case_sensitive)
     CheckBox caseSensitiveCB;
-    @Bind(R.id.each_word_search)
+    @BindView(R.id.each_word_search)
     CheckBox eachWordSearchCB;
-    @Bind(R.id.spinner)
+    @BindView(R.id.spinner)
     Spinner spinner;
-    @Bind(R.id.progress)
+    @BindView(R.id.progress)
     ProgressBar progressBar;
 
     private int checkedId = R.id.search_type_word;
@@ -92,6 +93,59 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private ArrayList<Exploit> results;
     private BroadcastReceiver downloadFinishedReceiver;
     private long downloadId;
+
+    @SuppressLint("StaticFieldLeak")
+    private AsyncTask<Object, Object, String> checkDBVersionTask = new AsyncTask<Object, Object, String>() {
+        @Override
+        protected String doInBackground(Object... params) {
+            try {
+                Document document = Jsoup.connect(getString(R.string.text_url_repo))
+                        .userAgent("Searchsploit")
+                        .get();
+                Elements messages = document.body().select(".message");
+                return messages.get(1).text();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "not available";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            if (s.contains("DB:")) {
+                try {
+                    final Date date = dateFormat.parse(s.split(" ")[1]);
+                    if (((Long) HawkUtil.get(HawkUtil.LAST_DATABASE_UPDATE_KEY)) < date.getTime()) {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Database update")
+                                .setMessage("A newer version of database found, do You want to download it now?")
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        if (NetworkUtils.isOnline(MainActivity.this)) {
+                                            downloadId = NetworkUtils.downloadFile(MainActivity.this, NetworkUtils.DownloadOptions.databaseOptions(MainActivity.this));
+                                            HawkUtil.set(HawkUtil.LAST_DATABASE_UPDATE_KEY, date.getTime());
+                                        } else {
+                                            showNoInternetDialog();
+                                        }
+                                    }
+                                }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                                .setCancelable(false)
+                                .show();
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
 
     public static Intent createIntent(Context context) {
         return new Intent(context, MainActivity.class);
@@ -129,11 +183,13 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                     DownloadManager.Query query = new DownloadManager.Query();
                     query.setFilterById(downloadId);
                     Cursor c = ((DownloadManager) getSystemService(DOWNLOAD_SERVICE)).query(query);
-                    int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
-                    if (c.moveToFirst()) {
-                        if (c.getInt(columnIndex) == DownloadManager.STATUS_SUCCESSFUL) {
-                            searchB.setEnabled(true);
-                            Toast.makeText(context, "Done!", Toast.LENGTH_SHORT).show();
+                    if (c != null) {
+                        int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                        if (c.moveToFirst()) {
+                            if (c.getInt(columnIndex) == DownloadManager.STATUS_SUCCESSFUL) {
+                                searchB.setEnabled(true);
+                                Toast.makeText(context, "Done!", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
@@ -150,57 +206,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private void checkForDatabaseUpdates() {
         if (NetworkUtils.isOnline(this)) {
-            new AsyncTask<Object, Object, String>() {
-                @Override
-                protected String doInBackground(Object... params) {
-                    try {
-                        Document document = Jsoup.connect(getString(R.string.text_url_repo))
-                                .userAgent("Searchsploit")
-                                .get();
-                        Elements messages = document.body().select(".message");
-                        return messages.get(1).text();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    return "not available";
-                }
-
-                @Override
-                protected void onPostExecute(String s) {
-                    super.onPostExecute(s);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                    if (s.contains("DB:")) {
-                        try {
-                            final Date date = dateFormat.parse(s.split(" ")[1]);
-                            if (((Long) HawkUtil.get(HawkUtil.LAST_DATABASE_UPDATE_KEY)) < date.getTime()) {
-                                new AlertDialog.Builder(MainActivity.this)
-                                        .setTitle("Database update")
-                                        .setMessage("A newer version of database found, do You want to download it now?")
-                                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                if (NetworkUtils.isOnline(MainActivity.this)) {
-                                                    downloadId = NetworkUtils.downloadFile(MainActivity.this, NetworkUtils.DownloadOptions.databaseOptions(MainActivity.this));
-                                                    HawkUtil.set(HawkUtil.LAST_DATABASE_UPDATE_KEY, date.getTime());
-                                                } else {
-                                                    showNoInternetDialog();
-                                                }
-                                            }
-                                        }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                })
-                                        .setCancelable(false)
-                                        .show();
-                            }
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }.execute();
+            checkDBVersionTask.execute();
         }
     }
 
@@ -234,6 +240,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         finish();
     }
 
+    @SuppressLint("StaticFieldLeak")
     @OnClick(R.id.search)
     public void onSearchClick(View view) {
         if (validateOptionsAndInput()) {
@@ -244,9 +251,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 @Override
                 protected ArrayList<Exploit> doInBackground(Void... params) {
                     try {
-                        if (!eachWordSearch) {
-                            return getResultsForQuery(query);
-                        } else {
+                        if (eachWordSearch) {
                             String[] words = query.split(" ");
                             ArrayList<String> trueWords = new ArrayList<>();
                             for (String word : words) {
@@ -263,6 +268,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
                             return joinResults(resultsForEachWord);
                         }
+                        return getResultsForQuery(query);
                     } catch (IOException e) {
                         e.printStackTrace();
                         return new ArrayList<>();
@@ -327,11 +333,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             ArrayList<Exploit> exploits = convertOutputToExploits(results);
             ArrayList<Exploit> trash = getInvalidResults(exploits, query);
             exploits.removeAll(trash);
-
             trash.clear();
-
-            System.gc();
-
             return exploits;
         }
     }
@@ -341,15 +343,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         for (String result : results) {
             String[] items = result.split(",");
 
+            int port = 0;
+
+            if (items.length == 8) {
+                port = Integer.parseInt(items[7]);
+            }
+
             Exploit exploit = new Exploit(
                     Integer.parseInt(items[0]),
                     items[1],
                     items[2].replace("\"", ""),
                     items[3],
                     items[4].replace("\"", ""),
-                    items[5],
                     items[6],
-                    Integer.parseInt(items[7]));
+                    items[5],
+                    port);
 
             exploits.add(exploit);
         }
@@ -395,14 +403,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         return trash;
     }
 
-    private String streamToString(InputStream inputStream, boolean fast) {
-        String output = "";
+    private String streamToString(InputStream inputStream, @SuppressWarnings("SameParameterValue") boolean fast) {
+        StringBuilder output = new StringBuilder();
         if (fast) {
             try {
-                output = new Scanner(inputStream).useDelimiter("\\A").next();
+                output = new StringBuilder(new Scanner(inputStream).useDelimiter("\\A").next());
             } catch (Exception e) {
                 //empty inputStream
-                return output;
+                return output.toString();
             }
         } else {
             //if bugs will happen
@@ -411,7 +419,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             String line;
             try {
                 while ((line = bufferedReader.readLine()) != null) {
-                    output += line + "\n";
+                    output.append(line).append("\n");
                 }
                 inputStream.close();
             } catch (IOException e) {
@@ -419,7 +427,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             }
 
         }
-        return output;
+        return output.toString();
     }
 
     private void setUIColors(int color) {
@@ -499,10 +507,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     private String buildCommand(String query) {
         String command = "cat " + HawkUtil.get(HawkUtil.DATABASE_PATH_KEY) + " | grep ";
-        if (!caseSensitiveCB.isChecked()) {
-            command += "-i '";
-        } else {
+        if (caseSensitiveCB.isChecked()) {
             command += "'";
+        } else {
+            command += "-i '";
         }
 
         command += query;

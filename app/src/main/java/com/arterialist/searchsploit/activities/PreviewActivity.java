@@ -13,23 +13,23 @@ import android.widget.TextView;
 
 import com.arterialist.searchsploit.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 public class PreviewActivity extends BaseActivity {
 
     public static final String EXTRA_FILE_TYPE = "EXTRA_FILE_TYPE";
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.title)
+    @BindView(R.id.title)
     TextView titleTV;
-    @Bind(R.id.previewText)
+    @BindView(R.id.previewText)
     TextView previewTV;
-    @Bind(R.id.settingsBar)
+    @BindView(R.id.settingsBar)
     LinearLayout settingsBar;
 
-    @Bind(R.id.themeText)
+    @BindView(R.id.themeText)
     TextView themeTextTV;
 
     public static final String EXTRA_PREVIEW_TEXT = "EXTRA_PREVIEW_TEXT";
@@ -77,18 +77,18 @@ public class PreviewActivity extends BaseActivity {
             previewTV.setBackgroundColor(ContextCompat.getColor(this, R.color.blueGrey900));
             previewTV.setTextColor(grey300);
             settingsBar.setBackgroundColor(ContextCompat.getColor(this, R.color.grey900));
-            changeSettingsBatTextColors(grey300);
+            changeSettingsBarTextColors(grey300);
         } else {
             int grey700 = ContextCompat.getColor(this, R.color.grey700);
             themeTextTV.setText(R.string.text_simple_light);
             previewTV.setBackgroundColor(Color.WHITE);
             previewTV.setTextColor(grey700);
             settingsBar.setBackgroundColor(grey300);
-            changeSettingsBatTextColors(grey700);
+            changeSettingsBarTextColors(grey700);
         }
     }
 
-    private void changeSettingsBatTextColors(int color) {
+    private void changeSettingsBarTextColors(int color) {
         for (int index = 0; index < settingsBar.getChildCount(); index++) {
             View childAt = settingsBar.getChildAt(index);
             if (childAt instanceof TextView) {

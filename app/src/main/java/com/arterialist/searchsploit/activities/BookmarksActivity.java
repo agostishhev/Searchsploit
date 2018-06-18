@@ -30,15 +30,15 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Scanner;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import ir.sohreco.androidfilechooser.ExternalStorageNotAvailableException;
 import ir.sohreco.androidfilechooser.FileChooserDialog;
 
 public class BookmarksActivity extends BaseActivity implements ExploitAdapter.OnItemClickListener, Toolbar.OnMenuItemClickListener, FileChooserDialog.ChooserListener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.list)
+    @BindView(R.id.list)
     RecyclerView recyclerView;
 
     public static Intent createIntent(Context context) {
