@@ -1,6 +1,6 @@
 # Searchsploit
 
-![Searchsploit icon](https://github.com/agostishhev/Searchsploit/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true)
+![Searchsploit icon](https://github.com/arterialist/Searchsploit/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true)
 Searchsploit is an Android app that allows You to search, view and download exploits from [Offensive security repository.](https://github.com/offensive-security/exploit-data) I've created this because I wanted to have access to [this](https://github.com/sygo/searchsploit) tool at any time. So here it is!
 
 ## Features
@@ -30,9 +30,7 @@ Searchsploit is an Android app that allows You to search, view and download expl
 
 If You want, You can always donate some crypto
 
-BTC: `1Lq7eNUPJVzTPZEjGfA2V6RgED3nEF4ii1`
-
-ETH: `0x4accd29da05890c6be590a259e7dd3569c7015e2`
+BTC: `bc1q8m66amnmrpecj7jv7a755jys3xe4hwypcaulgg`
 
 ### P.S.
 Thanks to @sygo for idea and @offensive-security for great exploits repo.
